@@ -1,0 +1,116 @@
+body{
+    background-color: #595a69;
+
+}
+
+/* Dashboard Containers */
+
+.dashboard-reservations{
+    display:flex;
+    justify-content: space-around;
+    list-style-type: none;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.dashboard-reservations > * {
+    flex: 1 1 10em;
+    background-color: rgb(71, 71, 71);
+    color: rgb(146, 145, 145);
+    border-radius: 20px;
+    border: black 2px solid;
+    font-size: 20px;
+    font-family: serif, sans-serif;
+    padding: 3%;
+    max-width: 60%;
+}
+
+.dashboard-tables{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;    
+    gap: 1em;
+}
+
+.dashboard-tables > * {
+    flex: 1 1 10em;
+    background-color: rgb(71, 71, 71);
+    color: rgb(146, 145, 145);
+    padding: 3%;
+    border-radius: 20px;
+    max-width: 30%;
+    border: black 2px solid;
+    font-size: 20px;
+    font-family: serif, sans-serif;
+}
+
+.dashboard-dates{
+    display: flex;
+    justify-content: space-evenly;
+    flex: wrap;
+    gap:1em;
+    margin: 10px;
+}
+
+.dashboard-buttons{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dashboard-button-edit{
+    background-color:blueviolet;
+}
+
+.dashboard-button-seat{
+    background-color: chocolate;
+}
+.dashboard-date-button{
+    background-color: darkgrey;
+    border-radius: 20px;
+    height: 40px;
+    width: 160px;
+}
+
+.dashboard-date-button:hover{
+    background-color: blueviolet;
+}
+
+/*Dashboard ends*/
+
+/* Search Page */
+
+.search-reservations{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.search-reservations > * {
+    flex: 1 1 10em;
+    background-color:rgb(71, 71, 71);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(146, 145, 145);
+    border-radius: 20px;
+    border:black 3px solid;
+    padding: 40px;
+    min-width: 30%;
+}
+
+
+.search-buttons{
+    display: flex;
+    justify-content:start;
+}
+
+.search-buttons > :nth-child(1){
+    background-color:rgb(114, 3, 3);
+}
+
+.search-buttons > :nth-child(2){
+    background-color:blueviolet;
+}

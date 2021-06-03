@@ -66,4 +66,78 @@ export async function listReservations(params, signal) {
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
+};
+
+export async function createReservations(reservation, signal) {
+  const url = `${API_BASE_URL}/reservations/new`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(reservation),
+    signal,
+  };
+  return await fetchJson(url, options);
+};
+
+export async function createTable(table, signal){
+  const url = `${API_BASE_URL}/tables/new`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(table),
+    signal,
+  };
+  return await fetchJson(url, options);
 }
+
+export async function listTables(signal){
+  const url = new URL(`${API_BASE_URL}/tables`)
+  return await fetchJson(url, { headers, signal }, [])
+};
+
+export async function listReservation(params, signal){
+  const url = new URL(`${API_BASE_URL}/reservations/${params}`)
+  return await fetchJson(url, { headers, signal }, [])
+};
+
+export async function listReservationByPhone(params, signal){
+  const url = new URL(`${API_BASE_URL}/reservations?mobile_number=${params}`);
+  Object.entries(params).forEach(([key, value]) =>
+    url.searchParams.append(key, value.toString())
+  );
+  //106-108 seem to be useless here exam the code later
+  return await fetchJson(url, { headers, signal }, [])
+};
+
+export async function updateStatus(params, status, signal){
+  const url = new URL(`${API_BASE_URL}/reservations/${params}`)
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(status),
+    signal,
+  };
+  return await fetchJson(url, options)
+};
+
+export async function updateSeating(params, signal){
+  const url = new URL(`${API_BASE_URL}/tables/:table_id/seat`);
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(params),
+    signal
+  };
+  return await fetchJson(url, options);
+};
+
+export async function destorySeat(tableId, signal){
+  const url = new URL(`${API_BASE_URL}/tables/${tableId}/seat`);
+  const options = {
+    method: "DELETE",
+    headers,
+    signal
+  };
+  return await fetchJson(url, options)
+};
+

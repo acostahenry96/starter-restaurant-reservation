@@ -11,6 +11,8 @@ import "./Layout.css";
  *
  * @returns {JSX.Element}
  */
+//MENU CONTAINS THE PERIODIC TABLES
+//WHICH DO NOT CHANGE
 function Layout() {
   return (
     <div className="container-fluid">
