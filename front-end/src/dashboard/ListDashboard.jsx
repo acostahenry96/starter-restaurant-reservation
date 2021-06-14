@@ -23,7 +23,7 @@ function ListDashboard({ reservation }){
                 This reservation is {reservation["status"]}. 
                 <br/>
                 {
-                reservation["status"] == "booked" ?
+                reservation["status"] === "booked" ?
                     <div className="dashboard-buttons">
                     <button className="dashboard-button-seat" onClick={()=>history.push(`/reservations/${reservation["reservation_id"]}/seat`)}  >
                      Seat</button>
