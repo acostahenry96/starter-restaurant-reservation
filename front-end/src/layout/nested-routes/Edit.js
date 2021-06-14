@@ -12,7 +12,7 @@ export default function Edit(props){
     
 
     useEffect(()=>{
-        async function fetchData(){
+        async function fetchData(reservation_id){
           const abortController = new AbortController();
           listReservation(reservation_id, abortController.signal)
             .then((response) => setReservation(response[0]))
@@ -20,7 +20,7 @@ export default function Edit(props){
          
           return () => abortController.abort();
         }
-        fetchData();
+        fetchData(reservation_id);
     },[]);
 
 
@@ -28,7 +28,7 @@ export default function Edit(props){
         setReservation({...reservation, [ev.target.name] : ev.target.value});
     };
 
-    const handleSubmit =  async (ev) => {
+    const handleSubmit =  async (ev, reservation_id) => {
       ev.preventDefault();
       const abortController = new AbortController();
       updateStatus(reservation_id, reservation, abortController.signal)
@@ -46,7 +46,7 @@ export default function Edit(props){
         <div>
             {false ? 
                   <div>Only reservations with the status of booked can be edited</div> :
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={(e)=>handleSubmit(e, reservation_id)}>
                        <label>
               First name:
               <input type="text" name="first_name" defaultValue={reservation.first_name} placeholder="First name" onChange={handleChange} />
