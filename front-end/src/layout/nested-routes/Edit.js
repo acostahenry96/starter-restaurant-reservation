@@ -75,7 +75,6 @@ export default function Edit(props){
                   }
                   return setSelectedDate(date);
                 }}
-                dateFormat='yyyy/MM/dd'
                 minDate={new Date()}
                 filterDate={date => date.getDay() !== 2}
                 isClearable
