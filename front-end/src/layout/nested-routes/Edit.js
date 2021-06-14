@@ -11,17 +11,17 @@ export default function Edit(props){
     const [selectedDate, setSelectedDate] = useState(null);
     
 
-    useEffect(()=>{
-        async function fetchData(){
-          const abortController = new AbortController();
-          listReservation(params.reservation_id, abortController.signal)
-            .then((response) => setReservation(response))
-            .catch(console.log);
+    // useEffect(()=>{
+    //     async function fetchData(){
+    //       const abortController = new AbortController();
+    //       listReservation(params.reservation_id, abortController.signal)
+    //         .then((response) => setReservation(response[0]))
+    //         .catch(console.log);
          
-          return () => abortController.abort();
-        }
-        fetchData();
-    },[]);
+    //       return () => abortController.abort();
+    //     }
+    //     fetchData();
+    // },[]);
 
 
     const handleChange = (ev) => {
