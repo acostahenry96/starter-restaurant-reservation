@@ -10,18 +10,18 @@ export default function Seating(props){
     const [tables, setTables] = useState([]);
     const [seat, setSeat] = useState();
 
-    // useEffect(fetchData, []);
+    useEffect(fetchData, []);
 
-    // function fetchData() {
-    //     const abortController = new AbortController();
-    //     listReservation(params.reservation_id, abortController.signal)
-    //         .then(response => setReservation(response[0]))
-    //         .catch(console.log);
-    //     listTables(abortController.signal)
-    //         .then(response => setTables(response))
-    //         .catch(console.log);
-    //     return () => abortController.abort();
-    // };
+    function fetchData(){
+        const abortController = new AbortController();
+        listReservation(params.reservation_id, abortController.signal)
+            .then(response => setReservation(response[0]))
+            .catch(console.log);
+        listTables(abortController.signal)
+            .then(response => setTables(response))
+            .catch(console.log);
+        return () => abortController.abort();
+    };
 
     function handleSubmit(e){
         e.preventDefault();
