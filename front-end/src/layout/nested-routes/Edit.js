@@ -6,15 +6,15 @@ import { listReservation, updateStatus } from "../../utils/api";
 
 export default function Edit(props){
     const history = useHistory();
+    const { reservation_id } = useParams();
     const [reservation, setReservation] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     
 
     useEffect(()=>{
         async function fetchData(){
-          const params = useParams();
           const abortController = new AbortController();
-          listReservation(params.reservation_id, abortController.signal)
+          listReservation(reservation_id, abortController.signal)
             .then((response) => setReservation(response[0]))
             .catch(console.log);
          
@@ -29,10 +29,9 @@ export default function Edit(props){
     };
 
     const handleSubmit =  async (ev) => {
-      const params = useParams();
       ev.preventDefault();
       const abortController = new AbortController();
-      updateStatus(params.reservation_id, reservation, abortController.signal)
+      updateStatus(reservation_id, reservation, abortController.signal)
         .catch(console.log)
       history.push(`/dashboard?date=${reservation.reservation_date}`);
       return () => abortController.abort();
