@@ -46,9 +46,9 @@ export default function Seating(props){
             <label>Select a Table:</label>
             <select name="table_id" onChange={handleChange}>
                 {tables.map((table) => {
-                    if(table["capacity"] >= reservation["people"]){
-                    return <option id={table["table_id"]} value={table["table_id"]}>{table["table_name"]} - {table["capacity"]}</option>
-                    } else { <option>No Tables/Bars that big!</option>}
+                    if(table["capacity"] >= reservation["people"])
+                    return <option id={table["table_id"]} value={table["table_id"]}>{table["table_name"]} - {table["capacity"]}</option>;
+                    return  <option>No Tables/Bars that big!</option>
                 }
                     )}
             </select>
