@@ -6,7 +6,7 @@ import { listReservation, updateStatus } from "../../utils/api";
 
 export default function Edit(props){
     const history = useHistory();
-    const { reservation_id } = useParams();
+    const { reservation_id } = useParams() || null;
     const [reservation, setReservation] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     

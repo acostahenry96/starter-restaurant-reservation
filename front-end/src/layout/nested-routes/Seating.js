@@ -12,7 +12,7 @@ export default function Seating(props){
 
     useEffect(fetchData, []);
 
-    function fetchData(){
+    function fetchData() {
         const abortController = new AbortController();
         listReservation(params.reservation_id, abortController.signal)
             .then(response => setReservation(response[0]))
