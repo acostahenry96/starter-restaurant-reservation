@@ -6,13 +6,13 @@ import { listReservation, updateStatus } from "../../utils/api";
 
 export default function Edit(props){
     const history = useHistory();
-    const { reservation_id } = useParams() || null;
+    const { reservation_id } = useParams();
     const [reservation, setReservation] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     
 
-    useEffect(()=>{
-        async function fetchData(reservation_id){
+    useEffect((reservation_id)=>{
+        async function fetchData(){
           const abortController = new AbortController();
           listReservation(reservation_id, abortController.signal)
             .then((response) => setReservation(response[0]))
@@ -20,7 +20,7 @@ export default function Edit(props){
          
           return () => abortController.abort();
         }
-        fetchData(reservation_id);
+        fetchData();
     },[]);
 
 
@@ -28,7 +28,7 @@ export default function Edit(props){
         setReservation({...reservation, [ev.target.name] : ev.target.value});
     };
 
-    const handleSubmit =  async (ev, reservation_id) => {
+    const handleSubmit =  async (ev) => {
       ev.preventDefault();
       const abortController = new AbortController();
       updateStatus(reservation_id, reservation, abortController.signal)
@@ -46,7 +46,7 @@ export default function Edit(props){
         <div>
             {false ? 
                   <div>Only reservations with the status of booked can be edited</div> :
-                    <form onSubmit={(e)=>handleSubmit(e, reservation_id)}>
+                    <form onSubmit={handleSubmit}>
                        <label>
               First name:
               <input type="text" name="first_name" defaultValue={reservation.first_name} placeholder="First name" onChange={handleChange} />
