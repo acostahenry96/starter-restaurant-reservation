@@ -15,7 +15,7 @@ export default function Edit(props){
         async function fetchData(){
           const abortController = new AbortController();
           listReservation(params.reservation_id, abortController.signal)
-            .then((response) => setReservation(response[0]))
+            .then((response) => setReservation(response))
             .catch(console.log);
          
           return () => abortController.abort();
