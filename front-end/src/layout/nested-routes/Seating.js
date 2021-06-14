@@ -10,9 +10,8 @@ export default function Seating(props){
     const [tables, setTables] = useState([]);
     const [seat, setSeat] = useState();
 
-    useEffect(fetchData, []);
-
-    function fetchData() {
+    useEffect((params)=>{
+        function fetchData() {
         const abortController = new AbortController();
         listReservation(params.reservation_id, abortController.signal)
             .then(response => setReservation(response[0]))
@@ -21,7 +20,11 @@ export default function Seating(props){
             .then(response => setTables(response))
             .catch(console.log);
         return () => abortController.abort();
-    };
+         };
+         fetchData();
+    }, []);
+
+    
 
     function handleSubmit(e){
         e.preventDefault();
