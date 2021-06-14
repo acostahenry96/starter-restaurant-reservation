@@ -19,7 +19,7 @@ export default function Edit(props){
             .catch(console.log);
          
           return () => abortController.abort();
-        };
+        }
         fetchData();
     },[]);
 
